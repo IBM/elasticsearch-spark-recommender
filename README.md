@@ -13,5 +13,5 @@ This repo contains demo Jupyter notebooks illustrating the basics of how to use 
 To run: 
 
 ```
-PYSPARK_DRIVER_PYTHON=ipython PYSPARK_DRIVER_PYTHON_OPTS="notebook" PATH_TO_SPARK_2.1/bin/pyspark --driver-memory 2g --driver-class-path PATH_TO_ES_HADOOP/dist/elasticsearch-spark_2.11-5.3.0.jar
+PYSPARK_DRIVER_PYTHON=ipython PYSPARK_DRIVER_PYTHON_OPTS="notebook" PATH_TO_SPARK_2.1/bin/pyspark --driver-memory 2g --jars PATH_TO_ES_HADOOP/dist/elasticsearch-spark_2.11-5.3.0.jar
 ```
