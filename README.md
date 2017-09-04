@@ -63,12 +63,10 @@ Use the ``Deploy to Bluemix`` button **OR** create the services and run locally.
 ## Run locally
 > NOTE: These steps are only needed when running locally instead of using the ``Deploy to Bluemix`` button.
 
-<!-- there are MANY updates necessary here, just screenshots where appropriate -->
-
 1. [Clone the repo](#1-clone-the-repo)
-2. [Download and run Elasticsearch](#2-create-watson-services-with-ibm-bluemix)
-3. [Download the elasticsearch-hadoop JAR](#3-import-the-conversation-workspace)
-4. [Download Apache Spark](#4-load-the-discovery-documents)
+2. [Set up Elasticsearch](#2-set-up-elasticsearch)
+3. [Download the Elasticsearch Spark connector](#3-download-the-elasticsearch-spark-connector)
+4. [Download Apache Spark](#4-download-apache-spark)
 5. [Run the Notebook](#5-run-the-notebook)
 
 ### 1. Clone the repo
@@ -82,29 +80,15 @@ $ git clone https://github.com/IBM/REPO
 We’ll be using the file [`data/conversation/workspaces/banking.json`](data/conversation/workspaces/banking.json) and the folder
 [`data/conversation/workspaces/`](data/conversation/workspaces/)
 
-### 2. Create Watson services with IBM Bluemix
+### 2. Set up Elasticsearch
 
-Create the following services:
+TODO
 
-* [**Watson Conversation**](https://console.ng.bluemix.net/catalog/services/conversation)
-* [**Watson Discovery**](https://console.ng.bluemix.net/catalog/services/discovery)
-* [**Watson Tone Analyzer**](https://console.ng.bluemix.net/catalog/services/tone-analyzer)
-* [**Watson Natural Language Understanding**](https://console.ng.bluemix.net/catalog/services/natural-language-understanding)
+### 3. Download the Elasticsearch Spark connector
 
-### 3. Import the Conversation workspace
+TODO
 
-Launch the **Watson Conversation** tool. Use the **import** icon button on the right
-
-Find the local version of [`data/conversation/workspaces/banking.json`](data/conversation/workspaces/banking.json) and select
-**Import**. Find the **Workspace ID** by clicking on the context menu of the new
-workspace and select **View details**. Save this ID for later.
-
-*Optionally*, to view the conversation dialog select the workspace and choose the
-**Dialog** tab, here's a snippet of the dialog:
-
-![](doc/source/images/dialog.PNG)
-
-### 4. Load the Discovery documents
+### 4. Download Apache Spark
 
 Launch the **Watson Discovery** tool. Create a **new data collection**
 and give the data collection a unique name.
@@ -113,57 +97,9 @@ and give the data collection a unique name.
 
 Under `Add data to this collection` use `Drag and drop your documents here or browse from computer` to seed the content with the five documents in `data/discovery/docs`.
 
-### 5. Configure credentials
+### 5. Run the Notebook
 
-The credentials for Bluemix services (Conversation, Discovery, Tone Analyzer and
-Natural Language Understanding), can be found in the ``Services`` menu in Bluemix,
-by selecting the ``Service Credentials`` option for each service.
-
-The other settings for Conversation and Discovery were collected during the
-earlier setup steps (``DISCOVERY_COLLECTION_ID``, ``DISCOVERY_ENVIRONMENT_ID`` and
-``WORKSPACE_ID``).
-
-Copy the [`env.sample`](env.sample) to `.env`.
-
-```
-$ cp env.sample .env
-```
-Edit the `.env` file with the necessary settings.
-
-#### `env.sample:`
-
-```
-# Replace the credentials here with your own.
-# Rename this file to .env before starting the app.
-
-# Watson conversation
-CONVERSATION_USERNAME=<add_conversation_username>
-CONVERSATION_PASSWORD=<add_conversation_password>
-WORKSPACE_ID=<add_conversation_workspace>
-
-# Watson Discovery
-DISCOVERY_USERNAME=<add_discovery_username>
-DISCOVERY_PASSWORD=<add_discovery_password>
-DISCOVERY_ENVIRONMENT_ID=<add_discovery_environment>
-DISCOVERY_COLLECTION_ID=<add_discovery_collection>
-
-# Watson Natural Language Understanding
-NATURAL_LANGUAGE_UNDERSTANDING_USERNAME=<add_nlu_username>
-NATURAL_LANGUAGE_UNDERSTANDING_PASSWORD=<add_nlu_password>
-
-# Watson Tone Analyzer
-TONE_ANALYZER_USERNAME=<add_tone_analyzer_username>
-TONE_ANALYZER_PASSWORD=<add_tone_analyzer_password>
-
-# Run locally on a non-default port (default is 3000)
-# PORT=3000
-
-```
-
-### 6. Run the application
-1. ...
-2. ...
-3. ...
+TODO
 > Note: TODO
 
 # Sample output
@@ -195,19 +131,8 @@ If using the `Deploy to Bluemix` button some metrics are tracked, the following
 information is sent to a [Deployment Tracker](https://github.com/IBM-Bluemix/cf-deployment-tracker-service) service
 on each deployment:
 
-* Node.js package version
-* Node.js repository URL
-* Application Name (`application_name`)
-* Application GUID (`application_id`)
-* Application instance index number (`instance_index`)
-* Space ID (`space_id`)
-* Application Version (`application_version`)
-* Application URIs (`application_uris`)
-* Labels of bound services
-* Number of instances for each bound service and associated plan information
-
-This data is collected from the `package.json` file in the sample application and the `VCAP_APPLICATION` and `VCAP_SERVICES` environment variables in IBM Bluemix and other Cloud Foundry platforms. This data is used by IBM to track metrics around deployments of sample applications to IBM Bluemix to measure the usefulness of our examples, so that we can continuously improve the content we offer to you. Only deployments of sample applications that include code to ping the Deployment Tracker service will be tracked.
+* TODO
 
 ## Disabling Deployment Tracking
 
-To disable tracking, simply remove ``require("cf-deployment-tracker-client").track();`` from the ``app.js`` file in the top level directory.
+To disable tracking, TODO
