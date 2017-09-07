@@ -46,24 +46,9 @@ and integrate your systems more effectively.
 [![TODO - Video](http://img.youtube.com/vi/VIDEO/0.jpg)](https://www.youtube.com/watch?v=VIDEO)
 
 # Steps
-Use the ``Deploy to Bluemix`` button **OR** create the services and run locally.
-
-## Deploy to Bluemix
-<!--Update the repo and tracking id-->
-[![Deploy to Bluemix](https://deployment-tracker.mybluemix.net/stats/CODE/button.svg)](https://bluemix.net/deploy?repository=https://github.com/IBM/REPO.git)
-
-1. Press the above ``Deploy to Bluemix`` button and then click on ``Deploy``.
-
-<!--optional step-->
-2. In Toolchains, click on Delivery Pipeline to watch while the app is deployed. Once deployed, the app can be viewed by clicking 'View app'.
-![](doc/source/images/toolchain-pipeline.png)
-
-<!--update with service names from manifest.yml-->
-3. To see the app and services created and configured for this journey, use the Bluemix dashboard. The app is named `APP` with a unique suffix. The following services are created and easily identified by the `APP-` prefix:
-    * TODO
+Use thefollowing steps to create the required services and run the notebook locally.
 
 ## Run locally
-> NOTE: These steps are only needed when running locally instead of using the ``Deploy to Bluemix`` button.
 
 1. [Clone the repo](#1-clone-the-repo)
 2. [Set up Elasticsearch](#2-set-up-elasticsearch)
