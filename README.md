@@ -4,10 +4,9 @@
 # Building a Recommender with Apache Spark & Elasticsearch
 In this developer journey, we will create a scalable recommender system using Apache Spark and Elasticsearch.
 
-[Explain briefly how things work].
+[TBC - Explain briefly how things work].
 
-[TBC]
-This repo contains demo Jupyter notebooks illustrating the basics of how to use Apache Spark for generating ALS models from ratings data stored in Elasticsearch, saving the model factors to ES, and then using ES to serve real-time recommendations using the user and item factors.
+This repo contains a Jupyter notebook illustrating the basics of how to use Spark for training a collaborative filtering recommendation models from ratings data stored in Elasticsearch, saving the model factors to Elasticsearch, and then using Elasticsearch to serve real-time recommendations using the user and item factors.
 
 When the reader has completed this journey, they will understand how to:
 
