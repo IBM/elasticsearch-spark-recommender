@@ -100,7 +100,10 @@ PYSPARK_DRIVER_PYTHON=ipython PYSPARK_DRIVER_PYTHON_OPTS="notebook" PATH_TO_SPAR
 ![TODO - output](doc/source/images/sample_output.png)
 
 # Links
+
 * [Demo on Youtube](https://www.youtube.com/watch?v=VIDEO)
+* Watch the [meetup presentation](https://youtu.be/sa_Y488vj0M) and [slide deck](https://www.slideshare.net/sparktc/spark-ml-meedup-pentreath-puget) covering some of the background and technical details behind this Journey.
+* An extended version of the above presentation was given at ApacheCon Big Data Europe 2016 (see [slides](http://events.linuxfoundation.org/sites/events/files/slides/ApacheBigDataEU16-NPentreath.pdf)).
 
 # Troubleshooting
 
