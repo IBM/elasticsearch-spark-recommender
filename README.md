@@ -6,6 +6,9 @@ In this developer journey, we will create a scalable recommender system using Ap
 
 [Explain briefly how things work].
 
+[TBC]
+This repo contains demo Jupyter notebooks illustrating the basics of how to use Apache Spark for generating ALS models from ratings data stored in Elasticsearch, saving the model factors to ES, and then using ES to serve real-time recommendations using the user and item factors.
+
 When the reader has completed this journey, they will understand how to:
 
 * Ingest and index user event data into Elasticsearch
@@ -82,11 +85,13 @@ We’ll be using the file [`data/conversation/workspaces/banking.json`](data/con
 
 ### 2. Set up Elasticsearch
 
-TODO
+Running instance of Elasticsearch 5.3.0 ([download](https://www.elastic.co/downloads/past-releases/elasticsearch-5-3-0)).
+
+Elasticsearch vector scoring plugin installed (https://github.com/MLnick/elasticsearch-vector-scoring).
 
 ### 3. Download the Elasticsearch Spark connector
 
-TODO
+You will need to run your PySpark notebook with the `elasticsearch-spark` JAR (version `5.3.0`) on the classpath. [Download the JAR](https://www.elastic.co/downloads/past-releases/elasticsearch-apache-hadoop-5-3-0)).
 
 ### 4. Download Apache Spark
 
@@ -99,7 +104,11 @@ Under `Add data to this collection` use `Drag and drop your documents here or br
 
 ### 5. Run the Notebook
 
-TODO
+To run: 
+```
+PYSPARK_DRIVER_PYTHON=ipython PYSPARK_DRIVER_PYTHON_OPTS="notebook" PATH_TO_SPARK_2.1/bin/pyspark --driver-memory 2g --jars PATH_TO_ES_HADOOP/dist/elasticsearch-spark_2.11-5.3.0.jar
+```
+
 > Note: TODO
 
 # Sample output
