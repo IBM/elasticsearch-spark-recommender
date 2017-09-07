@@ -10,7 +10,7 @@ This repo contains a Jupyter notebook illustrating the basics of how to use Spar
 
 When the reader has completed this journey, they will understand how to:
 
-* Ingest and index user event data into Elasticsearch
+* Ingest and index user event data into Elasticsearch using the Elasticsearch Spark connector
 * Load event data into Spark DataFrames and use Spark's machine learning library (MLlib) to train a
 collaborative filtering recommender model
 * Export the trained model into Elasticsearch
