@@ -116,16 +116,3 @@ PYSPARK_DRIVER_PYTHON=ipython PYSPARK_DRIVER_PYTHON_OPTS="notebook" PATH_TO_SPAR
 
 # License
 [Apache 2.0](LICENSE)
-
-<!--This can stay as-is if using Deploy to Bluemix-->
-
-# Privacy Notice
-If using the `Deploy to Bluemix` button some metrics are tracked, the following
-information is sent to a [Deployment Tracker](https://github.com/IBM-Bluemix/cf-deployment-tracker-service) service
-on each deployment:
-
-* TODO
-
-## Disabling Deployment Tracking
-
-To disable tracking, TODO
