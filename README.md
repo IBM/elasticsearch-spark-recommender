@@ -64,14 +64,44 @@ Clone the `REPO` locally. In a terminal, run:
 $ git clone https://github.com/IBM/REPO
 ```
 
-We’ll be using the file [`data/conversation/workspaces/banking.json`](data/conversation/workspaces/banking.json) and the folder
-[`data/conversation/workspaces/`](data/conversation/workspaces/)
-
 ### 2. Set up Elasticsearch
 
-Running instance of Elasticsearch 5.3.0 ([download](https://www.elastic.co/downloads/past-releases/elasticsearch-5-3-0)).
+This Journey currently depends on Elasticsearch 5.3.0. Go to the [downloads page](https://www.elastic.co/downloads/past-releases/elasticsearch-5-3-0) and download the appropriate package for your system.
 
-Elasticsearch vector scoring plugin installed (https://github.com/MLnick/elasticsearch-vector-scoring).
+For example on Linux / Mac you can download the [TAR archive](https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.3.0.tar.gz) and unzip it using the command:
+
+```
+$ tar xfvz elasticsearch-5.3.0.tar.gz
+```
+
+Change directory to the newly unzipped folder using:
+
+```
+$ cd elasticsearch-5.3.0
+```
+
+Next, you will need to install the [Elasticsearch vector scoring plugin](https://github.com/MLnick/elasticsearch-vector-scoring). You can do this by running the following command (Elasticsearch will download the plugin file for you):
+
+```
+$ ./bin/elasticsearch-plugin install https://github.com/MLnick/elasticsearch-vector-scoring/releases/download/v5.3.0/elasticsearch-vector-scoring-5.3.0.zip
+```
+
+Next, start Elasticsearch (do this in a separate terminal window in order to keep it up and running):
+
+```
+$ ./bin/elasticsearch
+```
+
+You should see some start up logs displayed. Check that the `elasticsearch-vector-scoring-plugin` is successfully loaded:
+
+```
+$ ./bin/elasticsearch
+[2017-09-08T15:58:18,781][INFO ][o.e.n.Node               ] [] initializing ...
+...
+[2017-09-08T15:58:19,406][INFO ][o.e.p.PluginsService     ] [2Zs8kW3] loaded plugin [elasticsearch-vector-scoring]
+[2017-09-08T15:58:20,676][INFO ][o.e.n.Node               ] initialized
+...
+```
 
 ### 3. Download the Elasticsearch Spark connector
 
