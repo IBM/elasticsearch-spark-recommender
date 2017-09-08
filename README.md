@@ -105,7 +105,11 @@ $ ./bin/elasticsearch
 
 ### 3. Download the Elasticsearch Spark connector
 
-You will need to run your PySpark notebook with the `elasticsearch-spark` JAR (version `5.3.0`) on the classpath. [Download the JAR](https://www.elastic.co/downloads/past-releases/elasticsearch-apache-hadoop-5-3-0)).
+You will need to run your PySpark notebook with the `elasticsearch-spark` JAR (version `5.3.0`) on the classpath. Follow these steps to set up the connector:
+
+1. [Download the ZIP file](http://download.elastic.co/hadoop/elasticsearch-hadoop-5.3.0.zip).
+2. Unzip the file by running `$ unzip elasticsearch-hadoop-5.3.0.zip`.
+3. The connector JAR will be located in the `dist` subfolder.
 
 ### 4. Download Apache Spark
 
@@ -118,10 +122,14 @@ Under `Add data to this collection` use `Drag and drop your documents here or br
 
 ### 5. Run the Notebook
 
-To run: 
+To run the notebook you will need to launch a PySpark session within a Jupyter notebook. Remember to include the Elasticsearch Spark connector JAR from [step 3](#3-download-the-elasticsearch-spark-connector) on the classpath.
+
+From the base directory of the Journey repository that you cloned in [step 1](#1-clone-the-repo), run the following command to launch your PySpark notebook server locally (here `PATH_TO_SPARK` is the path where you unzipped the Spark release, and `PATH_TO_ES_SPARK` is the path where you unzipped the Elasticsearch Spark connector (this assumes you are running Spark with the default Scala version of `2.11`):
 ```
-PYSPARK_DRIVER_PYTHON=ipython PYSPARK_DRIVER_PYTHON_OPTS="notebook" PATH_TO_SPARK_2.1/bin/pyspark --driver-memory 2g --jars PATH_TO_ES_HADOOP/dist/elasticsearch-spark_2.11-5.3.0.jar
+PYSPARK_DRIVER_PYTHON="jupyter" PYSPARK_DRIVER_PYTHON_OPTS="notebook" PATH_TO_SPARK/bin/pyspark --driver-memory 4g --driver-class-path PATH_TO_ES_SPARK/dist/elasticsearch-spark_2.11-5.3.0.jar
 ```
+
+This should open a browser window with the Journey folder contents displayed. Click on the `notebooks` subfolder and then click on the `elasticsearch-spark-recommender.ipynb` file to launch the notebook.
 
 > Note: TODO
 
