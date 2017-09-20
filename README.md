@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/IBM/REPO.svg?branch=master)](https://travis-ci.org/IBM/REPO)
+<!--[![Build Status](https://travis-ci.org/IBM/REPO.svg?branch=master)](https://travis-ci.org/IBM/REPO)-->
 <!--![Bluemix Deployments](https://deployment-tracker.mybluemix.net/stats/CODE/badge.svg)-->
 
 # Building a Recommender with Apache Spark & Elasticsearch
@@ -46,9 +46,7 @@ and integrate your systems more effectively.
 [![TODO - Video](http://img.youtube.com/vi/VIDEO/0.jpg)](https://www.youtube.com/watch?v=VIDEO)
 
 # Steps
-Use thefollowing steps to create the required services and run the notebook locally.
-
-## Run locally
+Follow these steps to create the required services and run the notebook locally.
 
 1. [Clone the repo](#1-clone-the-repo)
 2. [Set up Elasticsearch](#2-set-up-elasticsearch)
