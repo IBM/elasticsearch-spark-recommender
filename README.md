@@ -21,11 +21,11 @@ recommendations with search and content filtering
 
 ## Flow
 <!--Add new flow steps based on the architecture diagram-->
-1. Step 1.
-2. Step 2.
-3. Step 3.
-4. Step 4.
-5. Step 5.
+1. Load the movie dataset into Spark.
+2. Use Spark DataFrame operations to clean up the dataset and load it into Elasticsearch.
+3. Using Spark MLlib, train a collaborative filtering recommendation model.
+4. Save the resulting model into Elasticsearch.
+5. Using Elasticsearch queries and a custom vector scoring plugin, generate some example recommendations. [The Movie Database](https://www.themoviedb.org/) API is used to display movie poster images for the recommended movies.
 
 ## Included components
 * [Apache Spark](http://spark.apache.org/): An open-source, fast and general-purpose cluster computing system
@@ -52,7 +52,9 @@ Follow these steps to create the required services and run the notebook locally.
 2. [Set up Elasticsearch](#2-set-up-elasticsearch)
 3. [Download the Elasticsearch Spark connector](#3-download-the-elasticsearch-spark-connector)
 4. [Download Apache Spark](#4-download-apache-spark)
-5. [Run the Notebook](#5-run-the-notebook)
+5. [Download the data](#5-download-the-data)
+6. [Launch the notebook](#6-launch-the-notebook)
+7. [Run the notebook](#7-run-the-notebook)
 
 ### 1. Clone the repo
 
@@ -111,14 +113,13 @@ You will need to run your PySpark notebook with the `elasticsearch-spark` JAR (v
 
 ### 4. Download Apache Spark
 
-Launch the **Watson Discovery** tool. Create a **new data collection**
-and give the data collection a unique name.
+[TODO]
 
-> Save the **environment_id** and **collection_id** for your `.env` file in the next step.
+### 5. Download the data
 
-Under `Add data to this collection` use `Drag and drop your documents here or browse from computer` to seed the content with the five documents in `data/discovery/docs`.
+You will be using the [Movielens dataset](https://grouplens.org/datasets/movielens/) of ratings given by a set of users to movies, together with movie metadata. There are a few versions of the dataset. You should download the ["latest small" version](http://files.grouplens.org/datasets/movielens/ml-latest-small.zip). Once downloaded, unzip the file by running `$ unzip ml-latest-small.zip`.
 
-### 5. Run the Notebook
+### 6. Launch the notebook
 
 To run the notebook you will need to launch a PySpark session within a Jupyter notebook. Remember to include the Elasticsearch Spark connector JAR from [step 3](#3-download-the-elasticsearch-spark-connector) on the classpath.
 
@@ -130,6 +131,10 @@ PYSPARK_DRIVER_PYTHON="jupyter" PYSPARK_DRIVER_PYTHON_OPTS="notebook" PATH_TO_SP
 This should open a browser window with the Journey folder contents displayed. Click on the `notebooks` subfolder and then click on the `elasticsearch-spark-recommender.ipynb` file to launch the notebook.
 
 > Note: TODO
+
+### 7. Run the notebook
+
+TODO
 
 # Sample output
 
