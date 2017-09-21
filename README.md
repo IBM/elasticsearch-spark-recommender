@@ -144,13 +144,34 @@ This should open a browser window with the Journey folder contents displayed. Cl
 
 ### 7. Run the notebook
 
-TODO
-
 > _Optional:_
 >
 > In order to display the images in the recommendation demo, you will need to access [The Movie Database API](https://www.themoviedb.org/documentation/api). Please follow the [instructions](https://developers.themoviedb.org/3/getting-started) to get an API key. You will also need to install the Python client using the command `$ pip install tmdbsimple`.
 >
 > The demo will still work without this API access, but no images will be displayed (so it won't look as good!).
+
+When a notebook is executed, what is actually happening is that each code cell in
+the notebook is executed, in order, from top to bottom.
+
+Each code cell is selectable and is preceded by a tag in the left margin. The tag
+format is `In [x]:`. Depending on the state of the notebook, the `x` can be:
+
+* A blank, this indicates that the cell has never been executed.
+* A number, this number represents the relative order this code step was executed.
+* A `*`, this indicates that the cell is currently executing.
+
+There are several ways to execute the code cells in your notebook:
+
+* One cell at a time.
+  * Select the cell, and then press the `Play` button in the toolbar. You can also hit `Shift+Enter` to execute the cell
+  and move to the next cell.
+* Batch mode, in sequential order.
+  * From the `Cell` menu bar, there are several options available. For example, you
+    can `Run All` cells in your notebook, or you can `Run All Below`, that will
+    start executing from the first cell under the currently selected cell, and then
+    continue executing all cells that follow.
+
+![](doc/source/images/notebook-run-cells.png)
 
 # Sample output
 
