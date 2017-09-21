@@ -117,6 +117,8 @@ This Journey should work with any Spark 2.x version, however it is recommended t
 
 > *Note if you download a different version, adjust the relevant command used above and elsewhere in this Journey accordingly*
 
+![Download Apache Spark](doc/source/images/download-apache-spark.png)
+
 ### 5. Download the data
 
 You will be using the [Movielens dataset](https://grouplens.org/datasets/movielens/) of ratings given by a set of users to movies, together with movie metadata. There are a few versions of the dataset. You should download the ["latest small" version](http://files.grouplens.org/datasets/movielens/ml-latest-small.zip). Once downloaded, unzip the file by running `$ unzip ml-latest-small.zip`.
