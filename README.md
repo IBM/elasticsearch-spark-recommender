@@ -117,6 +117,8 @@ This Journey should work with any Spark 2.x version, however it is recommended t
 
 > *Note if you download a different version, adjust the relevant command used above and elsewhere in this Journey accordingly*
 
+![Download Apache Spark](doc/source/images/download-apache-spark.png)
+
 ### 5. Download the data
 
 You will be using the [Movielens dataset](https://grouplens.org/datasets/movielens/) of ratings given by a set of users to movies, together with movie metadata. There are a few versions of the dataset. You should download the ["latest small" version](http://files.grouplens.org/datasets/movielens/ml-latest-small.zip). Once downloaded, unzip the file by running `$ unzip ml-latest-small.zip`.
@@ -139,14 +141,16 @@ This should open a browser window with the Journey folder contents displayed. Cl
 TODO
 
 > _Optional:_
-
-> In order to display the images in the recommendation demo, you will need to access [The Movie Database API](https://www.themoviedb.org/documentation/api). Please follow the [instructions](https://developers.themoviedb.org/3/getting-started) to get an API key.
-
-> You must also install the Python client using the command `$ pip install tmdbsimple`
+>
+> In order to display the images in the recommendation demo, you will need to access [The Movie Database API](https://www.themoviedb.org/documentation/api). Please follow the [instructions](https://developers.themoviedb.org/3/getting-started) to get an API key. You will also need to install the Python client using the command `$ pip install tmdbsimple`.
+>
+> The demo will still work without this API access, but no images will be displayed (so it won't look as good!).
 
 # Sample output
 
-![TODO - output](doc/source/images/sample_output.png)
+The example output in the `data/examples` folder shows the output of the notebook after running it in full. View it it [here]().
+
+> *Note:* To see the code and markdown cells without output, you can view [the raw notebook in the Github viewer](notebooks/elasticsearch-spark-recommender.ipynb).
 
 # Links
 
