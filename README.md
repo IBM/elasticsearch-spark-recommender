@@ -103,6 +103,12 @@ $ ./bin/elasticsearch
 ...
 ```
 
+Finally, you will need to install the Elasticsearch Python client. You can do this by running the following command (you should do this in a separate terminal window to the one running Elasticsearch):
+
+```
+$ pip install elasticsearch
+```
+
 ### 3. Download the Elasticsearch Spark connector
 
 You will need to run your PySpark notebook with the `elasticsearch-spark` JAR (version `5.3.0`) on the classpath. Follow these steps to set up the connector:
