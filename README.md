@@ -141,9 +141,9 @@ This should open a browser window with the Journey folder contents displayed. Cl
 TODO
 
 > _Optional:_
-
+>
 > In order to display the images in the recommendation demo, you will need to access [The Movie Database API](https://www.themoviedb.org/documentation/api). Please follow the [instructions](https://developers.themoviedb.org/3/getting-started) to get an API key.
-
+>
 > You must also install the Python client using the command `$ pip install tmdbsimple`
 
 # Sample output
