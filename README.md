@@ -148,7 +148,9 @@ TODO
 
 # Sample output
 
-![TODO - output](doc/source/images/sample_output.png)
+The example output in the `data/examples` folder shows the output of the notebook after running it in full. View it it [here]().
+
+> *Note:* To see the code and markdown cells without output, you can view [the raw notebook in the Github viewer](notebooks/elasticsearch-spark-recommender.ipynb).
 
 # Links
 
