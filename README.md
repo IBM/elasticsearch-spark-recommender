@@ -142,13 +142,13 @@ This should open a browser window with the Journey folder contents displayed. Cl
 
 ![Launch notebook](doc/source/images/launch-notebook.png)
 
-### 7. Run the notebook
-
 > _Optional:_
 >
 > In order to display the images in the recommendation demo, you will need to access [The Movie Database API](https://www.themoviedb.org/documentation/api). Please follow the [instructions](https://developers.themoviedb.org/3/getting-started) to get an API key. You will also need to install the Python client using the command `$ pip install tmdbsimple`.
 >
 > The demo will still work without this API access, but no images will be displayed (so it won't look as good!).
+
+### 7. Run the notebook
 
 When a notebook is executed, what is actually happening is that each code cell in
 the notebook is executed, in order, from top to bottom.
