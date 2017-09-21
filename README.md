@@ -17,7 +17,7 @@ collaborative filtering recommender model
 * Using a custom Elasticsearch plugin, compute user and _similar item_ recommendations and combine
 recommendations with search and content filtering
 
-![TODO - Architecture](doc/source/images/architecture.png)
+![Architecture diagram](doc/source/images/architecture.png)
 
 ## Flow
 <!--Add new flow steps based on the architecture diagram-->
@@ -113,7 +113,9 @@ You will need to run your PySpark notebook with the `elasticsearch-spark` JAR (v
 
 ### 4. Download Apache Spark
 
-[TODO]
+This Journey should work with any Spark 2.x version, however it is recommended that you download the latest version of Spark (currently 2.2.0) from the [downloads page](http://spark.apache.org/downloads.html). Once you have downloaded the file, unzip it by running `$ tar xfz spark-2.2.0-bin-hadoop2.7.tgz`.
+
+> *Note if you download a different version, adjust the relevant command used above and elsewhere in this Journey accordingly*
 
 ### 5. Download the data
 
@@ -130,11 +132,17 @@ PYSPARK_DRIVER_PYTHON="jupyter" PYSPARK_DRIVER_PYTHON_OPTS="notebook" PATH_TO_SP
 
 This should open a browser window with the Journey folder contents displayed. Click on the `notebooks` subfolder and then click on the `elasticsearch-spark-recommender.ipynb` file to launch the notebook.
 
-> Note: TODO
+![Launch notebook](doc/source/images/launch-notebook.png)
 
 ### 7. Run the notebook
 
 TODO
+
+> _Optional:_
+
+> In order to display the images in the recommendation demo, you will need to access [The Movie Database API](https://www.themoviedb.org/documentation/api). Please follow the [instructions](https://developers.themoviedb.org/3/getting-started) to get an API key.
+
+> You must also install the Python client using the command `$ pip install tmdbsimple`
 
 # Sample output
 
