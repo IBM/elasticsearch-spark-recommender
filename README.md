@@ -142,9 +142,9 @@ TODO
 
 > _Optional:_
 >
-> In order to display the images in the recommendation demo, you will need to access [The Movie Database API](https://www.themoviedb.org/documentation/api). Please follow the [instructions](https://developers.themoviedb.org/3/getting-started) to get an API key.
+> In order to display the images in the recommendation demo, you will need to access [The Movie Database API](https://www.themoviedb.org/documentation/api). Please follow the [instructions](https://developers.themoviedb.org/3/getting-started) to get an API key. You will also need to install the Python client using the command `$ pip install tmdbsimple`.
 >
-> You must also install the Python client using the command `$ pip install tmdbsimple`
+> The demo will still work without this API access, but no images will be displayed (so it won't look as good!).
 
 # Sample output
 
