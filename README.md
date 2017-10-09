@@ -112,11 +112,11 @@ $ pip install elasticsearch
 
 ### 3. Download the Elasticsearch Spark connector
 
-You will need to run your PySpark notebook with the `elasticsearch-spark` JAR (version `5.3.0`) on the classpath. Follow these steps to set up the connector:
+The [Elasticsearch Hadoop project](https://www.elastic.co/products/hadoop) provides connectors between Elasticsearch and various Hadoop-compatible systems, including Spark. The project provides a ZIP file to download that contains all these connectors. You will need to run your PySpark notebook with the Spark-specific connector JAR file on the classpath. Follow these steps to set up the connector:
 
-1. [Download the ZIP file](http://download.elastic.co/hadoop/elasticsearch-hadoop-5.3.0.zip).
+1. [Download](http://download.elastic.co/hadoop/elasticsearch-hadoop-5.3.0.zip) the `elasticsearch-hadoop-5.3.0.zip` file, which contains all the connectors.
 2. Unzip the file by running `$ unzip elasticsearch-hadoop-5.3.0.zip`.
-3. The connector JAR will be located in the `dist` subfolder.
+3. The JAR for the Spark connector is called `elasticsearch-spark_2.11-5.3.0.jar` and it will be located in the `dist` subfolder of the directory in which you unzipped the file above.
 
 ### 4. Download Apache Spark
 
