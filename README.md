@@ -132,6 +132,8 @@ You will be using the [Movielens dataset](https://grouplens.org/datasets/moviele
 
 ### 6. Launch the notebook
 
+> The notebook should work with Python 2.7 or 3.x (and has been tested on 2.7.11 and 3.6.1)
+
 To run the notebook you will need to launch a PySpark session within a Jupyter notebook. Remember to include the Elasticsearch Spark connector JAR from [step 3](#3-download-the-elasticsearch-spark-connector) on the classpath.
 
 Run the following command to launch your PySpark notebook server locally. **For this command to work correctly, you will need to launch the notebook from the base directory of the Journey repository that you cloned in [step 1](#1-clone-the-repo)**. If you are not in that directory, first `cd` into it. 
