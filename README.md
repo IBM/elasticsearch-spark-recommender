@@ -210,6 +210,20 @@ If you see this error when trying to write data from Spark to Elasticsearch in t
 If you see this error when trying to write data from Spark to Elasticsearch in the notebook, it means that you have already written data to the relevant index (for example the ratings data into the `ratings` index).
 
   > Solution: Try to continue working through the notebook from the next cell down. Alternatively, you can first delete all your indexes and re-run the Elasticsearch command to create index mappings (see the section *Step 2: Load data into Elasticsearch* in the notebook).
+  
+* Error: `ConnectionRefusedError: [Errno 61] Connection refused`
+
+You may see this error when trying to connect to Elasticsearch in the notebook. This likely means your Elasticsearch instance is not running.
+
+ > Solution: In a new terminal window, `cd` to the directory in which Elasticsearch is installed and run `./bin/elasticsearch` to start up Elasticsearch.
+ 
+* Error: `Py4JJavaError: An error occurred while calling o130.save.
+: org.elasticsearch.hadoop.rest.EsHadoopNoNodesLeftException: Connection error (check network and/or proxy settings)- all nodes failed; tried [[127.0.0.1:9200]]`
+
+You may see this error when trying to read data from Elasticsearch into Spark (or writing data from Spark to Elasticsearch) in the notebook. This likely means your Elasticsearch instance is not running.
+
+
+ > Solution: In a new terminal window, `cd` to the directory in which Elasticsearch is installed and run `./bin/elasticsearch` to start up Elasticsearch.
 
 <!--keep this-->
 
