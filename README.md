@@ -59,20 +59,21 @@ Follow these steps to create the required services and run the notebook locally.
 
 ### 1. Clone the repo
 
-Clone the `REPO` locally. In a terminal, run:
+Clone the `elasticsearch-spark-recommender` repository locally. In a terminal, run the following command:
 
 ```
-$ git clone https://github.com/IBM/REPO
+$ git clone https://github.com/IBM/elasticsearch-spark-recommender.git
 ```
 
 ### 2. Set up Elasticsearch
 
 This Journey currently depends on Elasticsearch 5.3.0. Go to the [downloads page](https://www.elastic.co/downloads/past-releases/elasticsearch-5-3-0) and download the appropriate package for your system.
 
-For example on Linux / Mac you can download the [TAR archive](https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.3.0.tar.gz) and unzip it using the command:
+For example on Linux / Mac you can download the [TAR archive](https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.3.0.tar.gz) and unzip it using the commands:
 
 ```
-$ tar xfvz elasticsearch-5.3.0.tar.gz
+$ wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.3.0.tar.gz
+$ tar xfz elasticsearch-5.3.0.tar.gz
 ```
 
 Change directory to the newly unzipped folder using:
@@ -114,7 +115,7 @@ $ pip install elasticsearch
 
 The [Elasticsearch Hadoop project](https://www.elastic.co/products/hadoop) provides connectors between Elasticsearch and various Hadoop-compatible systems, including Spark. The project provides a ZIP file to download that contains all these connectors. You will need to run your PySpark notebook with the Spark-specific connector JAR file on the classpath. Follow these steps to set up the connector:
 
-1. [Download](http://download.elastic.co/hadoop/elasticsearch-hadoop-5.3.0.zip) the `elasticsearch-hadoop-5.3.0.zip` file, which contains all the connectors.
+1. [Download](http://download.elastic.co/hadoop/elasticsearch-hadoop-5.3.0.zip) the `elasticsearch-hadoop-5.3.0.zip` file, which contains all the connectors. You can do this by running `$ wget http://download.elastic.co/hadoop/elasticsearch-hadoop-5.3.0.zip`.
 2. Unzip the file by running `$ unzip elasticsearch-hadoop-5.3.0.zip`.
 3. The JAR for the Spark connector is called `elasticsearch-spark_2.11-5.3.0.jar` and it will be located in the `dist` subfolder of the directory in which you unzipped the file above.
 
@@ -128,7 +129,15 @@ This Journey should work with any Spark 2.x version, however it is recommended t
 
 ### 5. Download the data
 
-You will be using the [Movielens dataset](https://grouplens.org/datasets/movielens/) of ratings given by a set of users to movies, together with movie metadata. There are a few versions of the dataset. You should download the ["latest small" version](http://files.grouplens.org/datasets/movielens/ml-latest-small.zip). Once downloaded, unzip the file by running `$ unzip ml-latest-small.zip`.
+You will be using the [Movielens dataset](https://grouplens.org/datasets/movielens/) of ratings given by a set of users to movies, together with movie metadata. There are a few versions of the dataset. You should download the ["latest small" version](http://files.grouplens.org/datasets/movielens/ml-latest-small.zip).
+
+Run the following commands from the base directory of the Journey repository:
+
+```
+$ cd data
+$ wget http://files.grouplens.org/datasets/movielens/ml-latest-small.zip
+$ unzip ml-latest-small.zip
+```
 
 ### 6. Launch the notebook
 
