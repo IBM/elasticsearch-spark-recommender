@@ -115,13 +115,22 @@ $ pip install elasticsearch
 
 The [Elasticsearch Hadoop project](https://www.elastic.co/products/hadoop) provides connectors between Elasticsearch and various Hadoop-compatible systems, including Spark. The project provides a ZIP file to download that contains all these connectors. You will need to run your PySpark notebook with the Spark-specific connector JAR file on the classpath. Follow these steps to set up the connector:
 
-1. [Download](http://download.elastic.co/hadoop/elasticsearch-hadoop-5.3.0.zip) the `elasticsearch-hadoop-5.3.0.zip` file, which contains all the connectors. You can do this by running `$ wget http://download.elastic.co/hadoop/elasticsearch-hadoop-5.3.0.zip`.
-2. Unzip the file by running `$ unzip elasticsearch-hadoop-5.3.0.zip`.
+1. [Download](http://download.elastic.co/hadoop/elasticsearch-hadoop-5.3.0.zip) the `elasticsearch-hadoop-5.3.0.zip` file, which contains all the connectors. You can do this by running:
+```
+$ wget http://download.elastic.co/hadoop/elasticsearch-hadoop-5.3.0.zip
+```
+2. Unzip the file by running:
+```
+$ unzip elasticsearch-hadoop-5.3.0.zip
+```
 3. The JAR for the Spark connector is called `elasticsearch-spark-20_2.11-5.3.0.jar` and it will be located in the `dist` subfolder of the directory in which you unzipped the file above.
 
 ### 4. Download Apache Spark
 
-This Journey should work with any Spark 2.x version, however it is recommended that you download the latest version of Spark (currently 2.2.0) from the [downloads page](http://spark.apache.org/downloads.html). Once you have downloaded the file, unzip it by running `$ tar xfz spark-2.2.0-bin-hadoop2.7.tgz`.
+This Journey should work with any Spark 2.x version, however it is recommended that you download the latest version of Spark (currently 2.2.0) from the [downloads page](http://spark.apache.org/downloads.html). Once you have downloaded the file, unzip it by running: 
+```
+$ tar xfz spark-2.2.0-bin-hadoop2.7.tgz
+```
 
 > *Note if you download a different version, adjust the relevant command used above and elsewhere in this Journey accordingly*
 
@@ -143,7 +152,10 @@ $ unzip ml-latest-small.zip
 
 > The notebook should work with Python 2.7 or 3.x (and has been tested on 2.7.11 and 3.6.1)
 
-To run the notebook you will need to launch a PySpark session within a Jupyter notebook. If you don't have Jupyter installed, you can install it by running the command `$ pip install jupyter`.
+To run the notebook you will need to launch a PySpark session within a Jupyter notebook. If you don't have Jupyter installed, you can install it by running the command:
+```
+$ pip install jupyter
+```
 
 Remember to include the Elasticsearch Spark connector JAR from [step 3](#3-download-the-elasticsearch-spark-connector) on the classpath when launching your notebook.
 
@@ -159,7 +171,10 @@ This should open a browser window with the Journey folder contents displayed. Cl
 
 > _Optional:_
 >
-> In order to display the images in the recommendation demo, you will need to access [The Movie Database API](https://www.themoviedb.org/documentation/api). Please follow the [instructions](https://developers.themoviedb.org/3/getting-started) to get an API key. You will also need to install the Python client using the command `$ pip install tmdbsimple`.
+> In order to display the images in the recommendation demo, you will need to access [The Movie Database API](https://www.themoviedb.org/documentation/api). Please follow the [instructions](https://developers.themoviedb.org/3/getting-started) to get an API key. You will also need to install the Python client using the command:
+```
+$ pip install tmdbsimple
+```
 >
 > The demo will still work without this API access, but no images will be displayed (so it won't look as good!).
 
