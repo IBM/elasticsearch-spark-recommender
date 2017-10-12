@@ -200,9 +200,7 @@ If you see this error when trying to write data from Spark to Elasticsearch in t
   > Solution: First try the launch command from [step 6](#6-launch-the-notebook), **ensuring you run it from the base directory of the Journey repo**.
   
   > If that does not work, try to use the fully-qualified path to the JAR file when launching the notebook, e.g.:
-  
   > `PYSPARK_DRIVER_PYTHON="jupyter" PYSPARK_DRIVER_PYTHON_OPTS="notebook" ../spark-2.2.0-bin-hadoop2.7/bin/pyspark --driver-memory 4g --driver-class-path /FULL_PATH/elasticsearch-hadoop-5.3.0/dist/elasticsearch-spark-20_2.11-5.3.0.jar`
-  
   > where `FULL_PATH` is the fully-qualified (not relative) path to the directory _from which you unzippd the `elasticsearch-hadoop` ZIP file_.
 
 * Error: `org.elasticsearch.hadoop.EsHadoopIllegalStateException: SaveMode is set to ErrorIfExists and index demo/ratings exists and contains data. Consider changing the SaveMode`
@@ -222,8 +220,15 @@ You may see this error when trying to connect to Elasticsearch in the notebook. 
 
 You may see this error when trying to read data from Elasticsearch into Spark (or writing data from Spark to Elasticsearch) in the notebook. This likely means your Elasticsearch instance is not running.
 
-
  > Solution: In a new terminal window, `cd` to the directory in which Elasticsearch is installed and run `./bin/elasticsearch` to start up Elasticsearch.
+
+* Error: `ImportError: No module named elasticsearch`
+
+If you encounter this error, it either means the Elasticsearch Python client is not installed, or cannot be found on the `PYTHONPATH`.
+
+ > Solution: First try to install the client using `$ pip install elasticsearch` (if running in a Python virtual environment e.g. Conda or Virtualenv) or `$ sudo pip install elasticsearch` otherwise.
+ > If that doesn't work, add your site-packages folder to your Python path (e.g. on Mac: `export PYTHONPATH=/Library/Python/2.7/site-packages` for Python 2.7). See this [Stackoverflow issue](https://stackoverflow.com/questions/7731947/add-module-to-pythonpath-nothing-works) for another example on Linux.
+ > _Note:_ the same general solution applies to any other module import error that you may encounter.
 
 <!--keep this-->
 
