@@ -117,7 +117,7 @@ The [Elasticsearch Hadoop project](https://www.elastic.co/products/hadoop) provi
 
 1. [Download](http://download.elastic.co/hadoop/elasticsearch-hadoop-5.3.0.zip) the `elasticsearch-hadoop-5.3.0.zip` file, which contains all the connectors. You can do this by running `$ wget http://download.elastic.co/hadoop/elasticsearch-hadoop-5.3.0.zip`.
 2. Unzip the file by running `$ unzip elasticsearch-hadoop-5.3.0.zip`.
-3. The JAR for the Spark connector is called `elasticsearch-spark_2.11-5.3.0.jar` and it will be located in the `dist` subfolder of the directory in which you unzipped the file above.
+3. The JAR for the Spark connector is called `elasticsearch-spark-20_2.11-5.3.0.jar` and it will be located in the `dist` subfolder of the directory in which you unzipped the file above.
 
 ### 4. Download Apache Spark
 
