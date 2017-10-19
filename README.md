@@ -5,17 +5,17 @@
 
 Recommendation engines are one of the most well known, widely used and highest value use cases for applying machine learning. Despite this, while there are many resources available for the basics of training a recommendation model, there are relatively few that explain how to actually deploy these models to create a large-scale recommender system.
 
-In this developer journey, we will demonstrate key elements of creating such a system, using Apache Spark and Elasticsearch.
+This developer journey demonstrates the key elements of creating such a system, using Apache Spark and Elasticsearch.
 
 This repo contains a Jupyter notebook illustrating how to use Spark for training a collaborative filtering recommendation model from ratings data stored in Elasticsearch, saving the model factors to Elasticsearch, and then using Elasticsearch to serve real-time recommendations using the model.
 
-When the reader has completed this journey, they will understand how to:
+When you have completed this journey, you will understand how to:
 
 * Ingest and index user event data into Elasticsearch using the Elasticsearch Spark connector
 * Load event data into Spark DataFrames and use Spark's machine learning library (MLlib) to train a
 collaborative filtering recommender model
 * Export the trained model into Elasticsearch
-* Using a custom Elasticsearch plugin, compute _personalized_ user and _similar item_ recommendations and combine
+* Using a custom Elasticsearch plugin, compute _personalized user_ and _similar item_ recommendations and combine
 recommendations with search and content filtering
 
 ![Architecture diagram](doc/source/images/architecture.png)
