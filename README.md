@@ -7,7 +7,7 @@ Recommendation engines are one of the most well known, widely used and highest v
 
 This developer journey demonstrates the key elements of creating such a system, using Apache Spark and Elasticsearch.
 
-This repo contains a Jupyter notebook illustrating how to use Spark for training a collaborative filtering recommendation model from ratings data stored in Elasticsearch, saving the model factors to Elasticsearch, and then using Elasticsearch to serve real-time recommendations using the model. The data you will use comes from [MovieLens](https://grouplens.org/datasets/movielens/) and is a common benchmark dataset in the recommendations community. The data consists of a set ratings given by users of the MovieLens movie rating system, to various movies. It also contains metadata (title and genres) for each movie.
+This repo contains a Jupyter notebook illustrating how to use Spark for training a collaborative filtering recommendation model from ratings data stored in Elasticsearch, saving the model factors to Elasticsearch, and then using Elasticsearch to serve real-time recommendations using the model. The data you will use comes from [MovieLens](https://grouplens.org/datasets/movielens/) and is a common benchmark dataset in the recommendations community. The data consists of a set of ratings given by users of the MovieLens movie rating system, to various movies. It also contains metadata (title and genres) for each movie.
 
 When you have completed this journey, you will understand how to:
 
