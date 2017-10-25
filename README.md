@@ -44,7 +44,7 @@ and integrate your systems more effectively.
 
 <!--Update this section when the video is created-->
 # Watch the Video
-[![TODO - Video](http://img.youtube.com/vi/VIDEO/0.jpg)](https://www.youtube.com/watch?v=VIDEO)
+[![](http://img.youtube.com/vi/MJUO0CLNbB0/0.jpg)](https://www.youtube.com/watch?v=MJUO0CLNbB0)
 
 # Steps
 Follow these steps to create the required services and run the notebook locally.
@@ -216,7 +216,7 @@ The example output in the `data/examples` folder shows the output of the noteboo
 
 # Links
 
-* [Demo on Youtube](https://www.youtube.com/watch?v=VIDEO)
+* [Demo on Youtube](https://www.youtube.com/watch?v=MJUO0CLNbB0)
 * Watch the [meetup presentation](https://youtu.be/sa_Y488vj0M) and [slide deck](https://www.slideshare.net/sparktc/spark-ml-meedup-pentreath-puget) covering some of the background and technical details behind this Journey.
 * An extended version of the above presentation was given at ApacheCon Big Data Europe 2016 (see [slides](http://events.linuxfoundation.org/sites/events/files/slides/ApacheBigDataEU16-NPentreath.pdf)).
 
