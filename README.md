@@ -136,6 +136,11 @@ $ tar xfz spark-2.2.0-bin-hadoop2.7.tgz
 
 ![Download Apache Spark](doc/source/images/download-apache-spark.png)
 
+You will also need to install [Numpy](http://www.numpy.org) in order to use Spark's machine learning library, [MLlib](http://spark.apache.org/mllib). If you don't have Numpy installed, run:
+```
+$ pip install numpy
+```
+
 ### 5. Download the data
 
 You will be using the [Movielens dataset](https://grouplens.org/datasets/movielens/) of ratings given by a set of users to movies, together with movie metadata. There are a few versions of the dataset. You should download the ["latest small" version](http://files.grouplens.org/datasets/movielens/ml-latest-small.zip).
