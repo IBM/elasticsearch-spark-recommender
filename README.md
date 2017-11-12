@@ -1,27 +1,21 @@
-<!--[![Build Status](https://travis-ci.org/IBM/REPO.svg?branch=master)](https://travis-ci.org/IBM/REPO)-->
-<!--![Bluemix Deployments](https://deployment-tracker.mybluemix.net/stats/CODE/badge.svg)-->
-
 # Building a Recommender with Apache Spark & Elasticsearch
 
 Recommendation engines are one of the most well known, widely used and highest value use cases for applying machine learning. Despite this, while there are many resources available for the basics of training a recommendation model, there are relatively few that explain how to actually deploy these models to create a large-scale recommender system.
 
-This developer journey demonstrates the key elements of creating such a system, using Apache Spark and Elasticsearch.
+This Code Pattern demonstrates the key elements of creating such a system, using Apache Spark and Elasticsearch.
 
 This repo contains a Jupyter notebook illustrating how to use Spark for training a collaborative filtering recommendation model from ratings data stored in Elasticsearch, saving the model factors to Elasticsearch, and then using Elasticsearch to serve real-time recommendations using the model. The data you will use comes from [MovieLens](https://grouplens.org/datasets/movielens/) and is a common benchmark dataset in the recommendations community. The data consists of a set of ratings given by users of the MovieLens movie rating system, to various movies. It also contains metadata (title and genres) for each movie.
 
-When you have completed this journey, you will understand how to:
+When you have completed this Code Pattern, you will understand how to:
 
 * Ingest and index user event data into Elasticsearch using the Elasticsearch Spark connector
-* Load event data into Spark DataFrames and use Spark's machine learning library (MLlib) to train a
-collaborative filtering recommender model
+* Load event data into Spark DataFrames and use Spark's machine learning library (MLlib) to train a collaborative filtering recommender model
 * Export the trained model into Elasticsearch
-* Using a custom Elasticsearch plugin, compute _personalized user_ and _similar item_ recommendations and combine
-recommendations with search and content filtering
+* Using a custom Elasticsearch plugin, compute _personalized user_ and _similar item_ recommendations and combine recommendations with search and content filtering
 
 ![Architecture diagram](doc/source/images/architecture.png)
 
 ## Flow
-<!--Add new flow steps based on the architecture diagram-->
 1. Load the movie dataset into Spark.
 2. Use Spark DataFrame operations to clean up the dataset and load it into Elasticsearch.
 3. Using Spark MLlib, train a collaborative filtering recommendation model.
@@ -31,18 +25,14 @@ recommendations with search and content filtering
 ## Included components
 * [Apache Spark](http://spark.apache.org/): An open-source, fast and general-purpose cluster computing system
 * [Elasticsearch](http://elasticsearch.org): Open-source search and analytics engine 
-* [Jupyter Notebooks](http://jupyter.org/): An open-source web application that allows you to
-create and share documents that contain live code, equations, visualizations and explanatory text.
+* [Jupyter Notebooks](http://jupyter.org/): An open-source web application that allows you to create and share documents that contain live code, equations, visualizations and explanatory text.
 
 ## Featured technologies
 * [Data Science](https://medium.com/ibm-data-science-experience/): Systems and scientific methods to analyze
 structured and unstructured data in order to extract knowledge and insights.
-* [Artificial Intelligence](https://medium.com/ibm-data-science-experience): Artificial intelligence can be
-applied to disparate solution spaces to deliver disruptive technologies.
-* [Python](https://www.python.org/): Python is a programming language that lets you work more quickly
-and integrate your systems more effectively.
+* [Artificial Intelligence](https://medium.com/ibm-data-science-experience): Artificial intelligence can be applied to disparate solution spaces to deliver disruptive technologies.
+* [Python](https://www.python.org/): Python is a programming language that lets you work more quickly and integrate your systems more effectively.
 
-<!--Update this section when the video is created-->
 # Watch the Video
 [![](http://img.youtube.com/vi/MJUO0CLNbB0/0.jpg)](https://www.youtube.com/watch?v=MJUO0CLNbB0)
 
@@ -67,7 +57,7 @@ $ git clone https://github.com/IBM/elasticsearch-spark-recommender.git
 
 ### 2. Set up Elasticsearch
 
-This Journey currently depends on Elasticsearch 5.3.0. Go to the [downloads page](https://www.elastic.co/downloads/past-releases/elasticsearch-5-3-0) and download the appropriate package for your system.
+This Code Pattern currently depends on Elasticsearch 5.3.0. Go to the [downloads page](https://www.elastic.co/downloads/past-releases/elasticsearch-5-3-0) and download the appropriate package for your system.
 
 For example on Linux / Mac you can download the [TAR archive](https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.3.0.tar.gz) and unzip it using the commands:
 
@@ -127,12 +117,12 @@ $ unzip elasticsearch-hadoop-5.3.0.zip
 
 ### 4. Download Apache Spark
 
-This Journey should work with any Spark 2.x version, however it is recommended that you download the latest version of Spark (currently 2.2.0) from the [downloads page](http://spark.apache.org/downloads.html). Once you have downloaded the file, unzip it by running: 
+This Code Pattern should work with any Spark 2.x version, however it is recommended that you download the latest version of Spark (currently 2.2.0) from the [downloads page](http://spark.apache.org/downloads.html). Once you have downloaded the file, unzip it by running: 
 ```
 $ tar xfz spark-2.2.0-bin-hadoop2.7.tgz
 ```
 
-> *Note if you download a different version, adjust the relevant command used above and elsewhere in this Journey accordingly*
+> *Note if you download a different version, adjust the relevant command used above and elsewhere in this Code Pattern accordingly*
 
 ![Download Apache Spark](doc/source/images/download-apache-spark.png)
 
@@ -145,7 +135,7 @@ $ pip install numpy
 
 You will be using the [Movielens dataset](https://grouplens.org/datasets/movielens/) of ratings given by a set of users to movies, together with movie metadata. There are a few versions of the dataset. You should download the ["latest small" version](http://files.grouplens.org/datasets/movielens/ml-latest-small.zip).
 
-Run the following commands from the base directory of the Journey repository:
+Run the following commands from the base directory of the Code Pattern repository:
 
 ```
 $ cd data
@@ -164,13 +154,13 @@ $ pip install jupyter
 
 Remember to include the Elasticsearch Spark connector JAR from [step 3](#3-download-the-elasticsearch-spark-connector) on the classpath when launching your notebook.
 
-Run the following command to launch your PySpark notebook server locally. **For this command to work correctly, you will need to launch the notebook from the base directory of the Journey repository that you cloned in [step 1](#1-clone-the-repo)**. If you are not in that directory, first `cd` into it. 
+Run the following command to launch your PySpark notebook server locally. **For this command to work correctly, you will need to launch the notebook from the base directory of the Code Pattern repository that you cloned in [step 1](#1-clone-the-repo)**. If you are not in that directory, first `cd` into it. 
 
 ```
 PYSPARK_DRIVER_PYTHON="jupyter" PYSPARK_DRIVER_PYTHON_OPTS="notebook" ../spark-2.2.0-bin-hadoop2.7/bin/pyspark --driver-memory 4g --driver-class-path ../../elasticsearch-hadoop-5.3.0/dist/elasticsearch-spark-20_2.11-5.3.0.jar
 ```
 
-This should open a browser window with the Journey folder contents displayed. Click on the `notebooks` subfolder and then click on the `elasticsearch-spark-recommender.ipynb` file to launch the notebook.
+This should open a browser window with the Code Pattern folder contents displayed. Click on the `notebooks` subfolder and then click on the `elasticsearch-spark-recommender.ipynb` file to launch the notebook.
 
 ![Launch notebook](doc/source/images/launch-notebook.png)
 
@@ -198,8 +188,7 @@ format is `In [x]:`. Depending on the state of the notebook, the `x` can be:
 There are several ways to execute the code cells in your notebook:
 
 * One cell at a time.
-  * Select the cell, and then press the `Play` button in the toolbar. You can also hit `Shift+Enter` to execute the cell
-  and move to the next cell.
+  * Select the cell, and then press the `Play` button in the toolbar. You can also hit `Shift+Enter` to execute the cell and move to the next cell.
 * Batch mode, in sequential order.
   * From the `Cell` menu bar, there are several options available. For example, you
     can `Run All` cells in your notebook, or you can `Run All Below`, that will
@@ -214,19 +203,13 @@ The example output in the `data/examples` folder shows the output of the noteboo
 
 > *Note:* To see the code and markdown cells without output, you can view [the raw notebook in the Github viewer](notebooks/elasticsearch-spark-recommender.ipynb).
 
-# Links
-
-* [Demo on Youtube](https://www.youtube.com/watch?v=MJUO0CLNbB0)
-* Watch the [meetup presentation](https://youtu.be/sa_Y488vj0M) and [slide deck](https://www.slideshare.net/sparktc/spark-ml-meedup-pentreath-puget) covering some of the background and technical details behind this Journey.
-* An extended version of the above presentation was given at ApacheCon Big Data Europe 2016 (see [slides](http://events.linuxfoundation.org/sites/events/files/slides/ApacheBigDataEU16-NPentreath.pdf)).
-
 # Troubleshooting
 
 * Error: `java.lang.ClassNotFoundException: Failed to find data source: es.`
 
 If you see this error when trying to write data from Spark to Elasticsearch in the notebook, it means that the Elasticsearch Spark connector (`elasticsearch-spark-20_2.11-5.3.0.jar`) was not found on the class path by Spark when launching the notebook.
 
-  > Solution: First try the launch command from [step 6](#6-launch-the-notebook), **ensuring you run it from the base directory of the Journey repo**.
+  > Solution: First try the launch command from [step 6](#6-launch-the-notebook), **ensuring you run it from the base directory of the Code Pattern repo**.
   
   > If that does not work, try to use the fully-qualified path to the JAR file when launching the notebook, e.g.:
   > `PYSPARK_DRIVER_PYTHON="jupyter" PYSPARK_DRIVER_PYTHON_OPTS="notebook" ../spark-2.2.0-bin-hadoop2.7/bin/pyspark --driver-memory 4g --driver-class-path /FULL_PATH/elasticsearch-hadoop-5.3.0/dist/elasticsearch-spark-20_2.11-5.3.0.jar`
@@ -265,7 +248,22 @@ If you see this error in your notebook while testing your TMDb API access, or ge
 
 > Solution: Follow the instructions at the end of [step 6](#6-launch-the-notebook) to set up your TMDb account and get your API key. Then copy the key into the `tmdb.API_KEY = 'YOUR_API_KEY'` line in the notebook cell at the end of _Step 1: Prepare the data_ (i.e. replacing `YOR_API_KEY` with the correct key). Once you have done that, execute that cell to test your access to TMDb API.
 
-<!--keep this-->
+# Links
+
+* [Demo on Youtube](https://www.youtube.com/watch?v=MJUO0CLNbB0): Watch the video.
+* [Meetup video presentation](https://youtu.be/sa_Y488vj0M): Watch the meetup presentation covering some of the background and technical details behind this pattern.
+* [Meetup deck](https://www.slideshare.net/sparktc/spark-ml-meedup-pentreath-puget): View the slides presented.
+* [ApacheCon Big Data Europe 2016](http://events.linuxfoundation.org/sites/events/files/slides/ApacheBigDataEU16-NPentreath.pdf): Check out an extended version of the meetup presentation.
+* [Data and Analytics](https://www.ibm.com/cloud/garage/content/architecture/dataAnalyticsArchitecture): Learn how this Pattern fits into the Data and Analytics Reference Architecture.
+
+# Learn more
+
+* **Data Analytics Code Patterns**: Enjoyed this Code Pattern? Check out our other [Data Analytics Code Patterns](https://developer.ibm.com/code/technologies/data-science/)
+* **AI and Data Code Pattern Playlist**: Bookmark our [playlist](https://www.youtube.com/playlist?list=PLzUbsvIyrNfknNewObx5N7uGZ5FKH0Fde) with all of our Code Pattern videos
+* **With Watson**: Want to take your Watson app to the next level? Looking to utilize Watson Brand assets? [Join the With Watson program](https://www.ibm.com/watson/with-watson/) to leverage exclusive brand, marketing, and tech resources to amplify and accelerate your Watson embedded commercial solution.
+* **Data Science Experience**: Master the art of data science with IBM's [Data Science Experience](https://datascience.ibm.com/)
+* **PowerAI**: Get started or get scaling, faster, with a software distribution for machine learning running on the Enterprise Platform for AI: [IBM Power Systems](https://www.ibm.com/ms-en/marketplace/deep-learning-platform)
+* **Spark on IBM Cloud**: Need a Spark cluster? Create up to 30 Spark executors on IBM Cloud with our [Spark service](https://console.bluemix.net/catalog/services/apache-spark)
 
 # License
 [Apache 2.0](LICENSE)
