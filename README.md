@@ -24,7 +24,7 @@ When you have completed this Code Pattern, you will understand how to:
 
 ## Included components
 * [Apache Spark](http://spark.apache.org/): An open-source, fast and general-purpose cluster computing system
-* [Elasticsearch](http://elasticsearch.org): Open-source search and analytics engine 
+* [Elasticsearch](http://elasticsearch.org): Open-source search and analytics engine
 * [Jupyter Notebooks](http://jupyter.org/): An open-source web application that allows you to create and share documents that contain live code, equations, visualizations and explanatory text.
 
 ## Featured technologies
@@ -117,7 +117,7 @@ $ unzip elasticsearch-hadoop-5.3.0.zip
 
 ### 4. Download Apache Spark
 
-This Code Pattern should work with any Spark 2.x version, however it is recommended that you download the latest version of Spark (currently 2.2.0) from the [downloads page](http://spark.apache.org/downloads.html). Once you have downloaded the file, unzip it by running: 
+This Code Pattern should work with any Spark 2.x version, however it is recommended that you download the latest version of Spark (currently 2.2.0) from the [downloads page](http://spark.apache.org/downloads.html). Once you have downloaded the file, unzip it by running:
 ```
 $ tar xfz spark-2.2.0-bin-hadoop2.7.tgz
 ```
@@ -154,7 +154,7 @@ $ pip install jupyter
 
 Remember to include the Elasticsearch Spark connector JAR from [step 3](#3-download-the-elasticsearch-spark-connector) on the classpath when launching your notebook.
 
-Run the following command to launch your PySpark notebook server locally. **For this command to work correctly, you will need to launch the notebook from the base directory of the Code Pattern repository that you cloned in [step 1](#1-clone-the-repo)**. If you are not in that directory, first `cd` into it. 
+Run the following command to launch your PySpark notebook server locally. **For this command to work correctly, you will need to launch the notebook from the base directory of the Code Pattern repository that you cloned in [step 1](#1-clone-the-repo)**. If you are not in that directory, first `cd` into it.
 
 ```
 PYSPARK_DRIVER_PYTHON="jupyter" PYSPARK_DRIVER_PYTHON_OPTS="notebook" ../spark-2.2.0-bin-hadoop2.7/bin/pyspark --driver-memory 4g --driver-class-path ../../elasticsearch-hadoop-5.3.0/dist/elasticsearch-spark-20_2.11-5.3.0.jar
@@ -210,7 +210,7 @@ The example output in the `data/examples` folder shows the output of the noteboo
 If you see this error when trying to write data from Spark to Elasticsearch in the notebook, it means that the Elasticsearch Spark connector (`elasticsearch-spark-20_2.11-5.3.0.jar`) was not found on the class path by Spark when launching the notebook.
 
   > Solution: First try the launch command from [step 6](#6-launch-the-notebook), **ensuring you run it from the base directory of the Code Pattern repo**.
-  
+
   > If that does not work, try to use the fully-qualified path to the JAR file when launching the notebook, e.g.:
   > `PYSPARK_DRIVER_PYTHON="jupyter" PYSPARK_DRIVER_PYTHON_OPTS="notebook" ../spark-2.2.0-bin-hadoop2.7/bin/pyspark --driver-memory 4g --driver-class-path /FULL_PATH/elasticsearch-hadoop-5.3.0/dist/elasticsearch-spark-20_2.11-5.3.0.jar`
   > where `FULL_PATH` is the fully-qualified (not relative) path to the directory _from which you unzippd the `elasticsearch-hadoop` ZIP file_.
@@ -220,13 +220,13 @@ If you see this error when trying to write data from Spark to Elasticsearch in t
 If you see this error when trying to write data from Spark to Elasticsearch in the notebook, it means that you have already written data to the relevant index (for example the ratings data into the `ratings` index).
 
   > Solution: Try to continue working through the notebook from the next cell down. Alternatively, you can first delete all your indexes and re-run the Elasticsearch command to create index mappings (see the section *Step 2: Load data into Elasticsearch* in the notebook).
-  
+
 * Error: `ConnectionRefusedError: [Errno 61] Connection refused`
 
 You may see this error when trying to connect to Elasticsearch in the notebook. This likely means your Elasticsearch instance is not running.
 
  > Solution: In a new terminal window, `cd` to the directory in which Elasticsearch is installed and run `./bin/elasticsearch` to start up Elasticsearch.
- 
+
 * Error: `Py4JJavaError: An error occurred while calling o130.save.
 : org.elasticsearch.hadoop.rest.EsHadoopNoNodesLeftException: Connection error (check network and/or proxy settings)- all nodes failed; tried [[127.0.0.1:9200]]`
 
