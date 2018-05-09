@@ -57,7 +57,12 @@ $ git clone https://github.com/IBM/elasticsearch-spark-recommender.git
 
 ### 2. Set up Elasticsearch
 
-This Code Pattern currently depends on Elasticsearch 5.3.0. Go to the [downloads page](https://www.elastic.co/downloads/past-releases/elasticsearch-5-3-0) and download the appropriate package for your system.
+This Code Pattern currently depends on Elasticsearch 5.3.0. 
+
+#### 2.1 Install Elasticsearch on your machine
+(You can skip this if you want to use prepared docker image see: ./docker/elasticsearch/README.md)
+
+Go to the [downloads page](https://www.elastic.co/downloads/past-releases/elasticsearch-5-3-0) and download the appropriate package for your system.
 
 For example on Linux / Mac you can download the [TAR archive](https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.3.0.tar.gz) and unzip it using the commands:
 
@@ -94,7 +99,7 @@ $ ./bin/elasticsearch
 [2017-09-08T15:58:20,676][INFO ][o.e.n.Node               ] initialized
 ...
 ```
-
+#### 2.2 Elasticsearch python install
 Finally, you will need to install the Elasticsearch Python client. You can do this by running the following command (you should do this in a separate terminal window to the one running Elasticsearch):
 
 ```
