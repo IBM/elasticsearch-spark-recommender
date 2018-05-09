@@ -1,5 +1,4 @@
 FROM          docker.elastic.co/elasticsearch/elasticsearch:5.3.0
-MAINTAINER    ApertusIT <apertus-it@apertus.uni-nke.hu>
 
 RUN /usr/share/elasticsearch/bin/elasticsearch-plugin install https://github.com/MLnick/elasticsearch-vector-scoring/releases/download/v5.3.0/elasticsearch-vector-scoring-5.3.0.zip
 RUN \
