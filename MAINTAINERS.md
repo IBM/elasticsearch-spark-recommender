@@ -6,7 +6,7 @@ more Code Pattern repositories.
 ## Methodology
 
 This repository does not have a traditional release management cycle, but
-should instead be maintained as as a useful, working, and polished reference at
+should instead be maintained as a useful, working, and polished reference at
 all times. While all work can therefore be focused on the master branch, the
 quality of this branch should never be compromised.
 
