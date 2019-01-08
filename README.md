@@ -24,9 +24,9 @@ When you have completed this Code Pattern, you will understand how to:
 5. Using Elasticsearch queries and a custom vector scoring plugin, generate some example recommendations. [The Movie Database](https://www.themoviedb.org/) API is used to display movie poster images for the recommended movies.
 
 ## Included components
-* [Apache Spark](http://spark.apache.org/): An open-source, fast and general-purpose cluster computing system
-* [Elasticsearch](http://elasticsearch.org): Open-source search and analytics engine
-* [Jupyter Notebooks](http://jupyter.org/): An open-source web application that allows you to create and share documents that contain live code, equations, visualizations and explanatory text.
+* [Apache Spark](https://spark.apache.org/): An open-source, fast and general-purpose cluster computing system
+* [Elasticsearch](https://www.elastic.co/): Open-source search and analytics engine
+* [Jupyter Notebooks](https://jupyter.org/): An open-source web application that allows you to create and share documents that contain live code, equations, visualizations and explanatory text.
 
 ## Featured technologies
 * [Data Science](https://medium.com/ibm-data-science-experience/): Systems and scientific methods to analyze
@@ -35,7 +35,7 @@ structured and unstructured data in order to extract knowledge and insights.
 * [Python](https://www.python.org/): Python is a programming language that lets you work more quickly and integrate your systems more effectively.
 
 # Watch the Video
-[![](http://img.youtube.com/vi/MJUO0CLNbB0/0.jpg)](https://www.youtube.com/watch?v=MJUO0CLNbB0)
+[![](https://img.youtube.com/vi/MJUO0CLNbB0/0.jpg)](https://www.youtube.com/watch?v=MJUO0CLNbB0)
 
 # Steps
 Follow these steps to create the required services and run the notebook locally.
@@ -106,9 +106,9 @@ $ pip install elasticsearch
 
 The [Elasticsearch Hadoop project](https://www.elastic.co/products/hadoop) provides connectors between Elasticsearch and various Hadoop-compatible systems, including Spark. The project provides a ZIP file to download that contains all these connectors. You will need to run your PySpark notebook with the Spark-specific connector JAR file on the classpath. Follow these steps to set up the connector:
 
-1. [Download](http://download.elastic.co/hadoop/elasticsearch-hadoop-5.3.0.zip) the `elasticsearch-hadoop-5.3.0.zip` file, which contains all the connectors. You can do this by running:
+1. [Download](https://download.elastic.co/hadoop/elasticsearch-hadoop-5.3.0.zip) the `elasticsearch-hadoop-5.3.0.zip` file, which contains all the connectors. You can do this by running:
 ```
-$ wget http://download.elastic.co/hadoop/elasticsearch-hadoop-5.3.0.zip
+$ wget https://download.elastic.co/hadoop/elasticsearch-hadoop-5.3.0.zip
 ```
 2. Unzip the file by running:
 ```
@@ -118,7 +118,7 @@ $ unzip elasticsearch-hadoop-5.3.0.zip
 
 ### 4. Download Apache Spark
 
-This Code Pattern should work with any Spark 2.x version, however it is recommended that you download the latest version of Spark (currently 2.2.0) from the [downloads page](http://spark.apache.org/downloads.html). Once you have downloaded the file, unzip it by running:
+This Code Pattern should work with any Spark 2.x version, however it is recommended that you download the latest version of Spark (currently 2.2.0) from the [downloads page](https://spark.apache.org/downloads.html). Once you have downloaded the file, unzip it by running:
 ```
 $ tar xfz spark-2.2.0-bin-hadoop2.7.tgz
 ```
@@ -127,7 +127,7 @@ $ tar xfz spark-2.2.0-bin-hadoop2.7.tgz
 
 ![Download Apache Spark](doc/source/images/download-apache-spark.png)
 
-You will also need to install [Numpy](http://www.numpy.org) in order to use Spark's machine learning library, [MLlib](http://spark.apache.org/mllib). If you don't have Numpy installed, run:
+You will also need to install [Numpy](https://www.numpy.org) in order to use Spark's machine learning library, [MLlib](https://spark.apache.org/mllib). If you don't have Numpy installed, run:
 ```
 $ pip install numpy
 ```
@@ -254,17 +254,17 @@ If you see this error in your notebook while testing your TMDb API access, or ge
 * [Demo on Youtube](https://www.youtube.com/watch?v=MJUO0CLNbB0): Watch the video.
 * [Meetup video presentation](https://youtu.be/sa_Y488vj0M): Watch the meetup presentation covering some of the background and technical details behind this pattern.
 * [Meetup deck](https://www.slideshare.net/sparktc/spark-ml-meedup-pentreath-puget): View the slides presented.
-* [ApacheCon Big Data Europe 2016](http://events.linuxfoundation.org/sites/events/files/slides/ApacheBigDataEU16-NPentreath.pdf): Check out an extended version of the meetup presentation.
-* [Data and Analytics](https://www.ibm.com/cloud/garage/content/architecture/dataAnalyticsArchitecture): Learn how this Pattern fits into the Data and Analytics Reference Architecture.
+* [ApacheCon Big Data Europe 2016](https://events.static.linuxfound.org/sites/events/files/slides/ApacheBigDataEU16-NPentreath.pdf): Check out an extended version of the meetup presentation.
+* [Data and Analytics](https://www.ibm.com/cloud/garage/architectures/dataAnalyticsArchitecture): Learn how this Pattern fits into the Data and Analytics Reference Architecture.
 
 # Learn more
 
-* **Data Analytics Code Patterns**: Enjoyed this Code Pattern? Check out our other [Data Analytics Code Patterns](https://developer.ibm.com/code/technologies/data-science/)
+* **Data Analytics Code Patterns**: Enjoyed this Code Pattern? Check out our other [Data Analytics Code Patterns](https://developer.ibm.com/technologies/data-science/)
 * **AI and Data Code Pattern Playlist**: Bookmark our [playlist](https://www.youtube.com/playlist?list=PLzUbsvIyrNfknNewObx5N7uGZ5FKH0Fde) with all of our Code Pattern videos
-* **Watson Studio**: Master the art of data science with IBM's [Watson Studio](https://datascience.ibm.com/)
-* **Spark on IBM Cloud**: Need a Spark cluster? Create up to 30 Spark executors on IBM Cloud with our [Spark service](https://console.bluemix.net/catalog/services/apache-spark)
+* **Watson Studio**: Master the art of data science with IBM's [Watson Studio](https://www.ibm.com/cloud/watson-studio)
+* **Spark on IBM Cloud**: Need a Spark cluster? Create up to 30 Spark executors on IBM Cloud with our [Spark service](https://cloud.ibm.com/catalog/services/apache-spark)
 
 # License
-This code pattern is licensed under the Apache Software License, Version 2.  Separate third party code objects invoked within this code pattern are licensed by their respective providers pursuant to their own separate licenses. Contributions are subject to the [Developer Certificate of Origin, Version 1.1 (DCO)](https://developercertificate.org/) and the [Apache Software License, Version 2](http://www.apache.org/licenses/LICENSE-2.0.txt).
+This code pattern is licensed under the Apache Software License, Version 2.  Separate third party code objects invoked within this code pattern are licensed by their respective providers pursuant to their own separate licenses. Contributions are subject to the [Developer Certificate of Origin, Version 1.1 (DCO)](https://developercertificate.org/) and the [Apache Software License, Version 2](https://www.apache.org/licenses/LICENSE-2.0.txt).
 
-[Apache Software License (ASL) FAQ](http://www.apache.org/foundation/license-faq.html#WhatDoesItMEAN)
+[Apache Software License (ASL) FAQ](https://www.apache.org/foundation/license-faq.html#WhatDoesItMEAN)
