@@ -261,7 +261,7 @@ $ pip install tmdbsimple
 
 * **数据分析 Code Pattern**：喜欢本 Code Pattern 吗？了解我们的其他[数据分析 Code Pattern](https://developer.ibm.com/cn/technologies/data-science/)
 * **AI 和数据 Code Pattern 播放清单**：收藏包含我们所有 Code Pattern 视频的[播放清单](http://i.youku.com/i/UNTI2NTA2NTAw/videos?spm=a2hzp.8244740.0.0)
-* **Data Science Experience**：通过 IBM [Data Science Experience](https://datascience.ibm.com/) 掌握数据科学艺术
+* **Data Science Experience**：通过 IBM [Watson Studio](https://datascience.ibm.com/) 掌握数据科学艺术
 * **IBM Cloud 上的 Spark**：需要一个 Spark 集群？通过我们的 [Spark 服务](https://console.bluemix.net/catalog/services/apache-spark)，在 IBM Cloud 上创建多达 30 个 Spark 执行程序。
 
 # 许可

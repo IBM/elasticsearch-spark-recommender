@@ -53,7 +53,7 @@ Follow these steps to create the required services and run the notebook locally.
 Clone the `elasticsearch-spark-recommender` repository locally. In a terminal, run the following command:
 
 ```
-$ git clone https://github.com/IBM/elasticsearch-spark-recommender.git
+$ git clone https://github.com/IBM/elasticsearch-spark-recommender
 ```
 
 ### 2. Set up Elasticsearch
