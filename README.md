@@ -12,32 +12,37 @@ When you have completed this Code Pattern, you will understand how to:
 * Ingest and index user event data into Elasticsearch using the Elasticsearch Spark connector
 * Load event data into Spark DataFrames and use Spark's machine learning library (MLlib) to train a collaborative filtering recommender model
 * Export the trained model into Elasticsearch
-* Using a custom Elasticsearch plugin, compute _personalized user_ and _similar item_ recommendations and combine recommendations with search and content filtering
+* Using a script score query in Elasticsearch, compute _similar item_ and _personalized user_ recommendations and combine recommendations with search and content filtering
 
 ![Architecture diagram](doc/source/images/architecture.png)
 
 ## Flow
+
 1. Load the movie dataset into Spark.
 2. Use Spark DataFrame operations to clean up the dataset and load it into Elasticsearch.
-3. Using Spark MLlib, train a collaborative filtering recommendation model.
+3. Using Spark MLlib, train a collaborative filtering recommendation model from the ratings data in Elasticsearch.
 4. Save the resulting model into Elasticsearch.
-5. Using Elasticsearch queries and a custom vector scoring plugin, generate some example recommendations. [The Movie Database](https://www.themoviedb.org/) API is used to display movie poster images for the recommended movies.
+5. Using Elasticsearch queries, generate some example recommendations. [The Movie Database](https://www.themoviedb.org/) API is used to display movie poster images for the recommended movies.
 
 ## Included components
+
 * [Apache Spark](https://spark.apache.org/): An open-source, fast and general-purpose cluster computing system
 * [Elasticsearch](https://www.elastic.co/): Open-source search and analytics engine
 * [Jupyter Notebooks](https://jupyter.org/): An open-source web application that allows you to create and share documents that contain live code, equations, visualizations and explanatory text.
 
 ## Featured technologies
+
 * [Data Science](https://medium.com/ibm-data-science-experience/): Systems and scientific methods to analyze
 structured and unstructured data in order to extract knowledge and insights.
 * [Artificial Intelligence](https://medium.com/ibm-data-science-experience): Artificial intelligence can be applied to disparate solution spaces to deliver disruptive technologies.
 * [Python](https://www.python.org/): Python is a programming language that lets you work more quickly and integrate your systems more effectively.
 
 # Watch the Video
+
 [![](https://img.youtube.com/vi/MJUO0CLNbB0/0.jpg)](https://www.youtube.com/watch?v=MJUO0CLNbB0)
 
 # Steps
+
 Follow these steps to create the required services and run the notebook locally.
 
 1. [Clone the repo](#1-clone-the-repo)
@@ -58,25 +63,21 @@ $ git clone https://github.com/IBM/elasticsearch-spark-recommender
 
 ### 2. Set up Elasticsearch
 
-This Code Pattern currently depends on Elasticsearch 5.3.0. Go to the [downloads page](https://www.elastic.co/downloads/past-releases/elasticsearch-5-3-0) and download the appropriate package for your system.
+This Code Pattern currently depends on Elasticsearch 7.6.x. Go to the [downloads page](https://www.elastic.co/downloads/elasticsearch) and download the appropriate package for your system. If you do not see a valid release version there, go to the [previous release page](https://www.elastic.co/downloads/past-releases#elasticsearch).
 
-For example on Linux / Mac you can download the [TAR archive](https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.3.0.tar.gz) and unzip it using the commands:
+> In this Code Pattern readme we will base instructions on Elasticsearch `7.6.2`.
+
+For example, on Mac you can download the [TAR archive](https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.6.2-darwin-x86_64.tar.gz) and unzip it using the commands:
 
 ```
-$ wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.3.0.tar.gz
-$ tar xfz elasticsearch-5.3.0.tar.gz
+$ wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.6.2-darwin-x86_64.tar.gz
+$ tar xfz elasticsearch-7.6.2-darwin-x86_64.tar.gz
 ```
 
 Change directory to the newly unzipped folder using:
 
 ```
-$ cd elasticsearch-5.3.0
-```
-
-Next, you will need to install the [Elasticsearch vector scoring plugin](https://github.com/MLnick/elasticsearch-vector-scoring). You can do this by running the following command (Elasticsearch will download the plugin file for you):
-
-```
-$ ./bin/elasticsearch-plugin install https://github.com/MLnick/elasticsearch-vector-scoring/releases/download/v5.3.0/elasticsearch-vector-scoring-5.3.0.zip
+$ cd elasticsearch-7.6.2
 ```
 
 Next, start Elasticsearch (do this in a separate terminal window in order to keep it up and running):
@@ -85,16 +86,7 @@ Next, start Elasticsearch (do this in a separate terminal window in order to kee
 $ ./bin/elasticsearch
 ```
 
-You should see some start up logs displayed. Check that the `elasticsearch-vector-scoring-plugin` is successfully loaded:
-
-```
-$ ./bin/elasticsearch
-[2017-09-08T15:58:18,781][INFO ][o.e.n.Node               ] [] initializing ...
-...
-[2017-09-08T15:58:19,406][INFO ][o.e.p.PluginsService     ] [2Zs8kW3] loaded plugin [elasticsearch-vector-scoring]
-[2017-09-08T15:58:20,676][INFO ][o.e.n.Node               ] initialized
-...
-```
+You should see some start up logs displayed.
 
 Finally, you will need to install the Elasticsearch Python client. You can do this by running the following command (you should do this in a separate terminal window to the one running Elasticsearch):
 
@@ -106,28 +98,32 @@ $ pip install elasticsearch
 
 The [Elasticsearch Hadoop project](https://www.elastic.co/products/hadoop) provides connectors between Elasticsearch and various Hadoop-compatible systems, including Spark. The project provides a ZIP file to download that contains all these connectors. You will need to run your PySpark notebook with the Spark-specific connector JAR file on the classpath. Follow these steps to set up the connector:
 
-1. [Download](https://download.elastic.co/hadoop/elasticsearch-hadoop-5.3.0.zip) the `elasticsearch-hadoop-5.3.0.zip` file, which contains all the connectors. You can do this by running:
+1. [Download](https://www.elastic.co/downloads/hadoop) the `elasticsearch-hadoop-7.6.2.zip` file, which contains all the connectors. You can do this by running:
 ```
-$ wget https://download.elastic.co/hadoop/elasticsearch-hadoop-5.3.0.zip
+$ wget https://artifacts.elastic.co/downloads/elasticsearch-hadoop/elasticsearch-hadoop-7.6.2.zip
 ```
 2. Unzip the file by running:
 ```
-$ unzip elasticsearch-hadoop-5.3.0.zip
+$ unzip elasticsearch-hadoop-7.6.2.zip
 ```
-3. The JAR for the Spark connector is called `elasticsearch-spark-20_2.11-5.3.0.jar` and it will be located in the `dist` subfolder of the directory in which you unzipped the file above.
+3. The JAR for the Spark connector is called `elasticsearch-spark-20_2.11-7.6.2.jar` and it will be located in the `dist` subfolder of the directory in which you unzipped the file above.
 
 ### 4. Download Apache Spark
 
-This Code Pattern should work with any Spark 2.x version, however it is recommended that you download the latest version of Spark (currently 2.2.0) from the [downloads page](https://spark.apache.org/downloads.html). Once you have downloaded the file, unzip it by running:
+> This Code Pattern should work with any Spark 2.x version, however this readme uses version `2.4.5`.
+
+![Download Apache Spark](doc/source/images/download-apache-spark.png)
+
+Download the Spark from the [downloads page](https://spark.apache.org/downloads.html). Once you have downloaded the file, unzip it by running:
+
 ```
-$ tar xfz spark-2.2.0-bin-hadoop2.7.tgz
+$ tar xfz spark-2.4.5-bin-hadoop2.7.tgz
 ```
 
 > *Note if you download a different version, adjust the relevant command used above and elsewhere in this Code Pattern accordingly*
 
-![Download Apache Spark](doc/source/images/download-apache-spark.png)
-
 You will also need to install [Numpy](https://www.numpy.org) in order to use Spark's machine learning library, [MLlib](https://spark.apache.org/mllib). If you don't have Numpy installed, run:
+
 ```
 $ pip install numpy
 ```
@@ -146,19 +142,19 @@ $ unzip ml-latest-small.zip
 
 ### 6. Launch the notebook
 
-> The notebook should work with Python 2.7 or 3.x (and has been tested on 2.7.11 and 3.6.1)
+> The notebook should work with Python 2.7+ or 3.x (but has only been tested on 3.6)
 
 To run the notebook you will need to launch a PySpark session within a Jupyter notebook. If you don't have Jupyter installed, you can install it by running the command:
 ```
 $ pip install jupyter
 ```
 
-Remember to include the Elasticsearch Spark connector JAR from [step 3](#3-download-the-elasticsearch-spark-connector) on the classpath when launching your notebook.
+Remember to include the Elasticsearch Spark connector JAR from [step 3](#3-download-the-elasticsearch-spark-connector) on the Spark classpath when launching your notebook.
 
 Run the following command to launch your PySpark notebook server locally. **For this command to work correctly, you will need to launch the notebook from the base directory of the Code Pattern repository that you cloned in [step 1](#1-clone-the-repo)**. If you are not in that directory, first `cd` into it.
 
 ```
-PYSPARK_DRIVER_PYTHON="jupyter" PYSPARK_DRIVER_PYTHON_OPTS="notebook" ../spark-2.2.0-bin-hadoop2.7/bin/pyspark --driver-memory 4g --driver-class-path ../../elasticsearch-hadoop-5.3.0/dist/elasticsearch-spark-20_2.11-5.3.0.jar
+PYSPARK_DRIVER_PYTHON="jupyter" PYSPARK_DRIVER_PYTHON_OPTS="notebook" ../spark-2.4.5-bin-hadoop2.7/bin/pyspark --driver-memory 4g --driver-class-path ../../elasticsearch-hadoop-7.6.2/dist/elasticsearch-spark-20_2.11-7.6.2.jar
 ```
 
 This should open a browser window with the Code Pattern folder contents displayed. Click on the `notebooks` subfolder and then click on the `elasticsearch-spark-recommender.ipynb` file to launch the notebook.
@@ -200,20 +196,20 @@ There are several ways to execute the code cells in your notebook:
 
 # Sample output
 
-The example output in the `data/examples` folder shows the output of the notebook after running it in full. View it it [here]().
+The example output in the `data/examples` folder shows the output of the notebook after running it in full. View it [here](https://github.com/IBM/elasticsearch-spark-recommender/tree/master/data/examples/elasticsearch-spark-recommender-completed.ipynb).
 
-> *Note:* To see the code and markdown cells without output, you can view [the raw notebook in the Github viewer](notebooks/elasticsearch-spark-recommender.ipynb).
+> *Note:* To see the code and markdown cells without output, you can view [the raw notebook](notebooks/elasticsearch-spark-recommender.ipynb).
 
 # Troubleshooting
 
 * Error: `java.lang.ClassNotFoundException: Failed to find data source: es.`
 
-If you see this error when trying to write data from Spark to Elasticsearch in the notebook, it means that the Elasticsearch Spark connector (`elasticsearch-spark-20_2.11-5.3.0.jar`) was not found on the class path by Spark when launching the notebook.
+If you see this error when trying to write data from Spark to Elasticsearch in the notebook, it means that the Elasticsearch Spark connector (`elasticsearch-spark-20_2.11-7.6.1.jar`) was not found on the class path by Spark when launching the notebook.
 
   > Solution: First try the launch command from [step 6](#6-launch-the-notebook), **ensuring you run it from the base directory of the Code Pattern repo**.
 
   > If that does not work, try to use the fully-qualified path to the JAR file when launching the notebook, e.g.:
-  > `PYSPARK_DRIVER_PYTHON="jupyter" PYSPARK_DRIVER_PYTHON_OPTS="notebook" ../spark-2.2.0-bin-hadoop2.7/bin/pyspark --driver-memory 4g --driver-class-path /FULL_PATH/elasticsearch-hadoop-5.3.0/dist/elasticsearch-spark-20_2.11-5.3.0.jar`
+  > `PYSPARK_DRIVER_PYTHON="jupyter" PYSPARK_DRIVER_PYTHON_OPTS="notebook" ../spark-2.2.0-bin-hadoop2.7/bin/pyspark --driver-memory 4g --driver-class-path /FULL_PATH/elasticsearch-hadoop-7.6.1/dist/elasticsearch-spark-20_2.11-7.6.1.jar`
   > where `FULL_PATH` is the fully-qualified (not relative) path to the directory _from which you unzippd the `elasticsearch-hadoop` ZIP file_.
 
 * Error: `org.elasticsearch.hadoop.EsHadoopIllegalStateException: SaveMode is set to ErrorIfExists and index demo/ratings exists and contains data. Consider changing the SaveMode`
@@ -251,10 +247,13 @@ If you see this error in your notebook while testing your TMDb API access, or ge
 
 # Links
 
+**Note** slide and video links below refer to an older version of this Code Pattern, that utilized the [Elasticsearch Vector Scoring Plugin](https://github.com/MLnick/elasticsearch-vector-scoring). Since Elasticsearch added [native support for dense vector scoring](https://www.elastic.co/blog/text-similarity-search-with-vectors-in-elasticsearch), the plugin is no longer required. However, the details about the way in which the models and scoring functions work are still valid.
+
 * [Demo on Youtube](https://www.youtube.com/watch?v=MJUO0CLNbB0): Watch the video.
 * [Meetup video presentation](https://youtu.be/sa_Y488vj0M): Watch the meetup presentation covering some of the background and technical details behind this pattern.
 * [Meetup deck](https://www.slideshare.net/sparktc/spark-ml-meedup-pentreath-puget): View the slides presented.
 * [ApacheCon Big Data Europe 2016](https://events.static.linuxfound.org/sites/events/files/slides/ApacheBigDataEU16-NPentreath.pdf): Check out an extended version of the meetup presentation.
+* [Berlin Buzzwords 2018](https://2019.berlinbuzzwords.de/file/bbuzz-2018-nick-pentreath-search-and-recommendations-3-sides-same-coin): An overview of 3 general approaches to recommendations using Elasticsearch, including factor vector scoring.
 * [Data and Analytics](https://www.ibm.com/cloud/garage/architectures/dataAnalyticsArchitecture): Learn how this Pattern fits into the Data and Analytics Reference Architecture.
 
 # Learn more
