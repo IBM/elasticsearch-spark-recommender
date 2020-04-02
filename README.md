@@ -86,7 +86,13 @@ Next, start Elasticsearch (do this in a separate terminal window in order to kee
 $ ./bin/elasticsearch
 ```
 
-You should see some start up logs displayed.
+_**Note:** the first time you try to run this command, you may see an error like the following:_
+
+```
+ElasticsearchException[Failure running machine learning native code. This could be due to running on an unsupported OS or distribution, missing OS libraries, or a problem with the temp directory. To bypass this problem by running Elasticsearch without machine learning functionality set [xpack.ml.enabled: false].]
+```
+
+In this case, re-running the command should successfully start up Elasticsearch.
 
 Finally, you will need to install the Elasticsearch Python client. You can do this by running the following command (you should do this in a separate terminal window to the one running Elasticsearch):
 
@@ -132,7 +138,7 @@ $ pip install numpy
 
 You will be using the [Movielens dataset](https://grouplens.org/datasets/movielens/) of ratings given by a set of users to movies, together with movie metadata. There are a few versions of the dataset. You should download the ["latest small" version](http://files.grouplens.org/datasets/movielens/ml-latest-small.zip).
 
-Run the following commands from the base directory of the Code Pattern repository:
+_Run the following commands from the base directory of the cloned Code Pattern repository:_
 
 ```
 $ cd data
@@ -146,7 +152,7 @@ $ unzip ml-latest-small.zip
 
 To run the notebook you will need to launch a PySpark session within a Jupyter notebook. If you don't have Jupyter installed, you can install it by running the command:
 ```
-$ pip install jupyter
+$ pip install notebook
 ```
 
 Remember to include the Elasticsearch Spark connector JAR from [step 3](#3-download-the-elasticsearch-spark-connector) on the Spark classpath when launching your notebook.
@@ -196,7 +202,7 @@ There are several ways to execute the code cells in your notebook:
 
 # Sample output
 
-The example output in the `data/examples` folder shows the output of the notebook after running it in full. View it [here](https://github.com/IBM/elasticsearch-spark-recommender/tree/master/data/examples/elasticsearch-spark-recommender-completed.ipynb).
+The example output in the `data/examples` folder shows the output of the notebook after running it in full. View it [here](data/examples/elasticsearch-spark-recommender-completed.ipynb).
 
 > *Note:* To see the code and markdown cells without output, you can view [the raw notebook](notebooks/elasticsearch-spark-recommender.ipynb).
 
@@ -204,19 +210,21 @@ The example output in the `data/examples` folder shows the output of the noteboo
 
 * Error: `java.lang.ClassNotFoundException: Failed to find data source: es.`
 
-If you see this error when trying to write data from Spark to Elasticsearch in the notebook, it means that the Elasticsearch Spark connector (`elasticsearch-spark-20_2.11-7.6.1.jar`) was not found on the class path by Spark when launching the notebook.
+If you see this error when trying to write data from Spark to Elasticsearch in the notebook, it means that the Elasticsearch Spark connector (`elasticsearch-spark-20_2.11-7.6.2.jar`) was not found on the class path by Spark when launching the notebook.
 
   > Solution: First try the launch command from [step 6](#6-launch-the-notebook), **ensuring you run it from the base directory of the Code Pattern repo**.
-
+  >
   > If that does not work, try to use the fully-qualified path to the JAR file when launching the notebook, e.g.:
-  > `PYSPARK_DRIVER_PYTHON="jupyter" PYSPARK_DRIVER_PYTHON_OPTS="notebook" ../spark-2.2.0-bin-hadoop2.7/bin/pyspark --driver-memory 4g --driver-class-path /FULL_PATH/elasticsearch-hadoop-7.6.1/dist/elasticsearch-spark-20_2.11-7.6.1.jar`
+  > 
+  > `PYSPARK_DRIVER_PYTHON="jupyter" PYSPARK_DRIVER_PYTHON_OPTS="notebook" ../spark-2.4.5-bin-hadoop2.7/bin/pyspark --driver-memory 4g --driver-class-path /FULL_PATH/elasticsearch-hadoop-7.6.2/dist/elasticsearch-spark-20_2.11-7.6.2.jar`
+  >
   > where `FULL_PATH` is the fully-qualified (not relative) path to the directory _from which you unzippd the `elasticsearch-hadoop` ZIP file_.
 
-* Error: `org.elasticsearch.hadoop.EsHadoopIllegalStateException: SaveMode is set to ErrorIfExists and index demo/ratings exists and contains data. Consider changing the SaveMode`
+* Error: `org.elasticsearch.hadoop.EsHadoopIllegalStateException: SaveMode is set to ErrorIfExists and index ratings exists and contains data. Consider changing the SaveMode`
 
 If you see this error when trying to write data from Spark to Elasticsearch in the notebook, it means that you have already written data to the relevant index (for example the ratings data into the `ratings` index).
 
-  > Solution: Try to continue working through the notebook from the next cell down. Alternatively, you can first delete all your indexes and re-run the Elasticsearch command to create index mappings (see the section *Step 2: Load data into Elasticsearch* in the notebook).
+  > Solution: Try to continue working through the notebook from the next cell down. Alternatively, you can first delete all your indics and re-run the Elasticsearch command to create index mappings (see the section *Step 2: Load data into Elasticsearch* in the notebook).
 
 * Error: `ConnectionRefusedError: [Errno 61] Connection refused`
 
@@ -247,7 +255,7 @@ If you see this error in your notebook while testing your TMDb API access, or ge
 
 # Links
 
-**Note** slide and video links below refer to an older version of this Code Pattern, that utilized the [Elasticsearch Vector Scoring Plugin](https://github.com/MLnick/elasticsearch-vector-scoring). Since Elasticsearch added [native support for dense vector scoring](https://www.elastic.co/blog/text-similarity-search-with-vectors-in-elasticsearch), the plugin is no longer required. However, the details about the way in which the models and scoring functions work are still valid.
+**Note** the slide and video links below refer to an older version of this Code Pattern, that utilized the [Elasticsearch Vector Scoring Plugin](https://github.com/MLnick/elasticsearch-vector-scoring). Since Elasticsearch added [native support for dense vector scoring](https://www.elastic.co/blog/text-similarity-search-with-vectors-in-elasticsearch), the plugin is no longer required. However, the details about the way in which the models and scoring functions work are still valid.
 
 * [Demo on Youtube](https://www.youtube.com/watch?v=MJUO0CLNbB0): Watch the video.
 * [Meetup video presentation](https://youtu.be/sa_Y488vj0M): Watch the meetup presentation covering some of the background and technical details behind this pattern.
